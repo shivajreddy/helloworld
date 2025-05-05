@@ -1,0 +1,28 @@
+# Go
+/bin/
+/pkg/
+*.exe
+*.test
+*.out
+
+# Node
+client/node_modules/
+client/dist/
+
+# Environment
+# .env
+# client/.env
+
+# Docker
+pgdata/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Others
+.idea/
+.vscode/ 
