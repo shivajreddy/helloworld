@@ -8,6 +8,7 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 
 # Copy source code
 COPY . .
@@ -16,7 +17,7 @@ COPY . .
 EXPOSE 3000
 
 # Start development server
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev", "--host"]
 
 # Production build stage
 FROM node:18-alpine AS builder
@@ -28,6 +29,7 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 
 # Copy source code
 COPY . .
