@@ -8,7 +8,8 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
-RUN npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+RUN npm install tailwindcss @tailwindcss/vite
+# RUN npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 
 # Copy source code
 COPY . .
