@@ -6,10 +6,12 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
+# Update Vite to latest version first
+RUN npm install vite@latest
+
+# Install other dependencies
 RUN npm install
-RUN npm install tailwindcss @tailwindcss/vite
-# RUN npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+RUN npm install tailwindcss @tailwindcss/vite @tailwindcss/postcss postcss
 
 # Copy source code
 COPY . .
@@ -28,9 +30,12 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
+# Update Vite to latest version first
+RUN npm install vite@latest
+
 # Install dependencies
 RUN npm install
-RUN npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+RUN npm install tailwindcss @tailwindcss/vite @tailwindcss/postcss postcss
 
 # Copy source code
 COPY . .
@@ -51,4 +56,4 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 3000
 
 # Start nginx
-CMD ["nginx", "-g", "daemon off;"] 
+CMD ["nginx", "-g", "daemon off;"]
