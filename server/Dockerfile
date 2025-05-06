@@ -1,3 +1,26 @@
+# Development stage
+FROM golang:1.21-alpine AS development
+
+WORKDIR /app
+
+# Install air for hot reloading
+RUN go install github.com/cosmtrek/air@v1.49.0
+
+# Copy go mod and sum files
+COPY go.mod go.sum ./
+
+# Download dependencies
+RUN go mod download
+
+# Copy source code
+COPY . .
+
+# Expose port
+EXPOSE 8080
+
+# Start air for hot reloading
+CMD ["air"]
+
 # Build stage
 FROM golang:1.21-alpine AS builder
 

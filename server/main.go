@@ -22,17 +22,23 @@ func main() {
 	config.DB.AutoMigrate(&models.User{})
 
 	// Initialize router
-	r := gin.Default()
+	router := gin.Default()
 
 	// Basic health check endpoint
-	r.GET("/health", func(c *gin.Context) {
+	router.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status": "ok",
 			"env":    config.AppConfig.Env,
 		})
 	})
 
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+
 	// Start server
 	log.Printf("Server starting on port %s...", config.AppConfig.Port)
-	r.Run(":" + config.AppConfig.Port)
+	router.Run(":" + config.AppConfig.Port)
 }

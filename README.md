@@ -42,6 +42,12 @@ helloworld
 Current Project name: helloworld
 Make sure to edit the following files to your new project name
     - server/go.mod
+    - client/package.json
+    - database/init.sql all the places you see 'helloworld'
+    - database/backups/backup.sh
+    - docker-compose.yml
+    - docker-compose.prod.yml
+    - NOTE: do searchgrep in the project for 'helloworld'
 
 - Step2: Uncomment the environment files in .gitignore
         - These are commented so that you can get the files, and set the final
