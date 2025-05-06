@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   server:
     build:
@@ -20,20 +19,19 @@ services:
     networks:
       - app-network
     restart: unless-stopped
-
   client:
     build:
       context: ./client
       dockerfile: Dockerfile
-      target: builder
+      # Use the production stage, not the builder
+      target: production
     ports:
-      - "80:80"
+      - "80:80"  # Uncommented to match Nginx config
     depends_on:
       - server
     networks:
       - app-network
     restart: unless-stopped
-
   db:
     image: postgres:15-alpine
     ports:
@@ -53,10 +51,8 @@ services:
     networks:
       - app-network
     restart: unless-stopped
-
 networks:
   app-network:
     driver: bridge
-
 volumes:
-  postgres_data: 
+  postgres_data:

@@ -25,7 +25,8 @@ services:
       dockerfile: Dockerfile
       target: development
     ports:
-      - "3000:3000"
+      # - "3000:3000"
+      - "80:80"
     volumes:
       - ./client:/app
       - /app/node_modules
