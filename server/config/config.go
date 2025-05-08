@@ -10,6 +10,9 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// ProjectName is the name of the project
+const ProjectName = "helloworld"
+
 type Config struct {
 	Port         string
 	Env          string
@@ -79,7 +82,7 @@ func LoadConfig() {
 			Host:            getEnv("DB_HOST", "localhost"),
 			User:            getEnv("DB_USER", "postgres"),
 			Password:        getEnv("DB_PASSWORD", "postgres"),
-			Name:            getEnv("DB_NAME", "helloworld"),
+			Name:            getEnv("DB_NAME", ProjectName),
 			Port:            getEnv("DB_PORT", "5432"),
 			SSLMode:         getEnv("DB_SSLMODE", "disable"),
 			MaxIdleConns:    getEnvInt("DB_MAX_IDLE_CONNS", 10),
@@ -89,7 +92,7 @@ func LoadConfig() {
 		JWTConfig: JWTConfig{
 			Secret:     getEnv("JWT_SECRET", "your-secret-key-here"),
 			Expiration: getEnvDuration("JWT_EXPIRATION", "24h"),
-			Issuer:     getEnv("JWT_ISSUER", "helloworld"),
+			Issuer:     getEnv("JWT_ISSUER", ProjectName),
 		},
 		LogConfig: LogConfig{
 			Level:      getEnv("LOG_LEVEL", "debug"),

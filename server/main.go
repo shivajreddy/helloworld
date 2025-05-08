@@ -3,9 +3,10 @@ package main
 import (
 	"log"
 
-	"github.com/gin-gonic/gin"
 	"helloworld/config"
 	"helloworld/models"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {

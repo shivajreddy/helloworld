@@ -1,9 +1,12 @@
+-- Set project name variable
+\set project_name 'helloworld'
+
 -- Create database if not exists
-SELECT 'CREATE DATABASE helloworld'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'helloworld');
+SELECT format('CREATE DATABASE %I', :'project_name')
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = :'project_name');
 
 -- Connect to the database
-\c helloworld;
+\c :project_name;
 
 -- Create extension for UUID if not exists
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
