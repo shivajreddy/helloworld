@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm install vite@latest
 # Install other dependencies
 RUN npm install
-RUN npm install tailwindcss @tailwindcss/vite @tailwindcss/postcss postcss
+RUN npm install tailwindcss @tailwindcss/vite @tailwindcss/postcss postcss autoprefixer@latest
 # Copy source code
 COPY . .
 # Expose port
